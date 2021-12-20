@@ -1,0 +1,10 @@
+127.0.0.1 - - [18/Dec/2021:01:50:46 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:50:49 +0900] "GET /Bcle/loginpage.action HTTP/1.1" 200 12012
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:50:49 +0900] "GET /Bcle/css/bootstrap.css HTTP/1.1" 404 780
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:50:49 +0900] "GET /Bcle/css/font-awesome.min.css HTTP/1.1" 404 787
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:50:49 +0900] "GET /Bcle/css/font-awesome.min.css HTTP/1.1" 404 787
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:50:49 +0900] "GET /favicon.ico HTTP/1.1" 404 761
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:51:52 +0900] "POST /Bcle/login.action HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:51:52 +0900] "GET /Bcle/mainpage.action HTTP/1.1" 200 11069
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:51:52 +0900] "GET /Bcle/css/font-awesome.min.css HTTP/1.1" 404 787
+0:0:0:0:0:0:0:1 - - [18/Dec/2021:01:51:52 +0900] "GET /Bcle/images/pic1.jpg HTTP/1.1" 404 778
