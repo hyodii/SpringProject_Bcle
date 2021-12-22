@@ -5,7 +5,7 @@
     String cp = request.getContextPath();
 %>
 <%
-   // Join_ok.jsp
+   // Join_ok.jsp (아이디 중복검사)
    Object checkIdObj = request.getAttribute("checkId");
 	
    // int로 형 변환

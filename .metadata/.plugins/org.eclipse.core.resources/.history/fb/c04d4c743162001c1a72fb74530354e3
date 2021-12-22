@@ -1,0 +1,11 @@
+/* ===============================
+	JoinDAO.java
+	- 회원가입시 필요한 모든 DAO
+=================================*/
+
+package com.test.mvc;
+
+public class JoinDAO
+{
+
+}

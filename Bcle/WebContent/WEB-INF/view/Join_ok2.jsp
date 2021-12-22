@@ -5,7 +5,7 @@
     String cp = request.getContextPath();
 %>
 <%
-   // Join_ok2.jsp
+   // Join_ok2.jsp (닉네임 중복검사)
    Object checkNickNameObj = request.getAttribute("checkNickName");
 	
    // int로 형 변환

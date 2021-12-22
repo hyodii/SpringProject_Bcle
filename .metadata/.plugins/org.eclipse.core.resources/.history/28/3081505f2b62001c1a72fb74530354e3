@@ -1,0 +1,11 @@
+/* ===============================
+	Region.java
+	- 지역 DTO
+=================================*/
+
+package com.test.mvc;
+
+public class Category
+{
+
+}

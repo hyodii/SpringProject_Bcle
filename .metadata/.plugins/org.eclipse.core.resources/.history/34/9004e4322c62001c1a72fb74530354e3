@@ -1,0 +1,14 @@
+/* =========================================
+	JoinDAO.java
+	- 회원가입시 필요한 모든 DAO 인터페이스
+===========================================*/
+
+package com.test.mvc;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public interface IJoinDAO
+{
+	public ArrayList<Region> regionLList() throws SQLException;
+}

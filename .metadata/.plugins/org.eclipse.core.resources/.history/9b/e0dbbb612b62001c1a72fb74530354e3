@@ -1,0 +1,11 @@
+/* ===============================
+	Category.java
+	- 카테고리 DTO
+=================================*/
+
+package com.test.mvc;
+
+public class Category
+{
+
+}

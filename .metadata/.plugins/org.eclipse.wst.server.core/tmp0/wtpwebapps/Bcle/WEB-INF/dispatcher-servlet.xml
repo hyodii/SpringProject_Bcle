@@ -41,10 +41,15 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="dataSource" ref="remoteDataSource"></property>
 	</bean>
 	
+	<!-- JoinDAO 등록 -->
+	<bean id="JoinDAO" class="com.test.mvc.JoinDAO">
+		<property name="dataSource" ref="remoteDataSource"></property>
+	</bean>
 	
-	<!-- RegionL 등록 -->
-	
-	<!-- RegionS 등록 -->
+	<!-- ClubDAO 등록 -->
+	<bean id="clubDAO" class="com.test.mvc.ClubDAO">
+		<property name="dataSource" ref="remoteDataSource"></property>
+	</bean>
 	
 	
 	
@@ -70,8 +75,9 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean name="/memberlist.action" class="com.test.mvc.MemberListController">
 	</bean>
 	
-	
+	 
 	<!-- bee 관련 Controller 등록 -->
+	<!-- 나중에 해제!
 	<bean name="/beecalendarlist.action" class="com.test.mvc.BeeCalendarListController">
 		<property name="dao" ref="beeDAO"></property>
 	</bean>
@@ -98,9 +104,12 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean name="/beedelete.action" class="com.test.mvc.BeeDeleteController">
 		<property name="dao" ref="beeDAO"></property>
 	</bean>
-	
+	-->
+	 
 	<!-- Join 관련 -->
-	<bean name="/joinform.action" class="com.test.mvc.JoinController"></bean>
+	<bean name="/joinform.action" class="com.test.mvc.JoinFornController">
+		<property name="dao" ref="JoinDAO"></property>
+	</bean>
 	
 	<!-- 아이디 중복 체크 -->
 	<bean name="/checkid.action" class="com.test.mvc.LoginCheckIdController">
@@ -111,5 +120,44 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean name="/checknickname.action" class="com.test.mvc.LoginCheckNickNameController">
 		<property name="dao" ref="MemberInfoDAO"></property>
 	</bean>
+	<!-- 지역 시 / 구 불러오기 -->
+	<bean name="/ajaxjoinregion.action" class="com.test.mvc.AjaxJoinRegionController">
+		<property name="dao" ref="JoinDAO"></property>
+	</bean>
+	<!-- 가입하기 눌렀을 때 -->
+	<bean name="/join.action" class="com.test.mvc.JoinController"></bean>
+	
+	
+	<!-- club 개설&리스트 관련 controller -->
+	<!-- 나중에 해제!
+   <bean name="/clubinsertform.action" class="com.test.mvc.ClubInsertFormController">
+       <property name="dao" ref="clubDAO"></property> 
+   </bean>
+   
+   club List controller
+   <bean name="/clubprelistform.action" class="com.test.mvc.ClubBeforeOpenedListController">
+    <property name="dao" ref="clubDAO"></property>
+   </bean>
+   
+   <bean name="/preopenclubdetail.action" class="com.test.mvc.PreOpenClubDetailController">
+    <property name="dao" ref="clubDAO"></property>
+   </bean>
+   
+      <bean name="/clubBeforeListSearch.action" class="com.test.mvc.ClubSearchController">
+    <property name="dao" ref="clubDAO"></property>
+   </bean>
+   
+   <bean name="/clubinsert.action" class="com.test.mvc.ClubInsertController">
+       <property name="dao" ref="clubDAO"></property> 
+   </bean>
+   
+    <bean name="/checktitle.action" class="com.test.mvc.CheckTitleController">
+      <property name="dao" ref="clubDAO"></property>
+   </bean>
+
+   <bean name="/clubbopeneddelete.action" class="com.test.mvc.ClubBOpenedDeleteController">
+      <property name="dao" ref="clubDAO"></property>
+   </bean>
+	 -->
 	
 </beans>

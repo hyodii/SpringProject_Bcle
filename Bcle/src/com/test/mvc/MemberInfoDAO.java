@@ -26,35 +26,6 @@ public class MemberInfoDAO implements IMemberInfoDAO
 		return result;
 	}
 	
-	// 지역 대분류 리스트
-	@Override
-	public ArrayList<RegionL> categortyLList() throws SQLException
-	{
-		ArrayList<RegionL> result = new ArrayList<RegionL>();
-		
-		return result;
-	}
-	
-	// 지역 소분류 리스트
-	@Override
-	public ArrayList<RegionS> categortySList() throws SQLException
-	{
-		ArrayList<RegionS> result = new ArrayList<RegionS>();
-		
-		return result;
-	}
-	
-	
-	// 카테고리 리스트 
-	/*
-	@Override
-	public ArrayList<Category> categortyList() throws SQLException
-	{
-		ArrayList<Category> result = new ArrayList<Category>();
-		
-		return result;
-	}
-	*/
 	
 	// 멤버 추가 메소드
 	@Override
