@@ -10,11 +10,13 @@
 <head>
 <meta charset="UTF-8">
 <title>JoinConfirm.jsp</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 </head>
 <body>
 
 <!-- 
-oinConfirm.jsp
+JoinConfirm.jsp
 - 회원가입 완료 페이지
  -->
  
@@ -35,8 +37,10 @@ oinConfirm.jsp
 			<div>				
 				<h1>BE:CLE</h1>
 				<h2>회원가입이 완료 되었습니다.</h2>
-				<h3><span>${nickName}</span>님의 회원가입을 축하합니다.</h3>
-				<h3>비클의 새로운 아이디는 <span>${userId}</span>입니다.</h3>
+				<c:forEach var="check" items="${checklist}" >
+					<h3><span>${check.nickName}</span>님의 회원가입을 축하합니다.</h3>
+					<h3>비클의 새로운 아이디는 <span>${check.userId}</span>입니다.</h3>					
+				</c:forEach>
 			</div>
 			<br>
 		

@@ -126,6 +126,10 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean name="/ajaxjoinregion.action" class="com.test.mvc.AjaxJoinRegionController">
 		<property name="dao" ref="JoinDAO"></property>
 	</bean>
+	<!-- 카테고리 상세 불러오기 -->
+	<bean name="/ajaxjoincategory.action" class="com.test.mvc.AjaxJoinCategoryController">
+		<property name="dao" ref="JoinDAO"></property>
+	</bean>
 	<!-- 주민번호 유효성 검사 -->
 	<bean name="/ssncheck.action" class="com.test.mvc.LoginSsnController">
 		<property name="dao" ref="MemberInfoDAO"></property>
@@ -134,8 +138,16 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean name="/join.action" class="com.test.mvc.JoinController">
 		<property name="dao" ref="MemberInfoDAO"></property>
 	</bean>
-	
-	
+	<!-- 아이디 찾기 -->
+	<bean name="/findid.action" class="com.test.mvc.FindIdController"></bean>
+	<bean name="/findidconfirm.action" class="com.test.mvc.FindConfirmController">
+		<property name="dao" ref="MemberInfoDAO"></property>
+	</bean>
+	<!-- 비밀번호 찾기 -->
+	<!-- 
+	<bean name="/findpassword.action" class="com.test.mvc.FindPasswordController" ></bean>
+	<bean name="/findpasswordform.action" class="com.test.mvc.FindPasswordFormController" ></bean>
+	-->
 	
 	<!-- club 개설&리스트 관련 controller -->
 	<!-- 나중에 해제!

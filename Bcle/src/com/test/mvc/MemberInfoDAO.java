@@ -114,7 +114,7 @@ public class MemberInfoDAO implements IMemberInfoDAO
 		
 		Connection conn = dataSource.getConnection();
 		
-		String sql = "INSERT INTO MEMBER(MID, BDATE, LOGIN_DATE, CATEGORY_S_ID) VALUES('M'|| MEMBERSEQ.NEXTVAL,SYSDATE, SYSDATE, ?)";
+		String sql = "INSERT INTO MEMBER(MID, BDATE, LOGIN_DATE, CATEGORY_S_ID) VALUES('M'|| MEMBERSEQ.NEXTVAL, SYSDATE, NULL, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, member.getCategoryId1());
@@ -135,12 +135,11 @@ public class MemberInfoDAO implements IMemberInfoDAO
 		
 		Connection conn = dataSource.getConnection();
 		
-		String sql = "INSERT INTO ADD_CATEGORY(ADD_CATEGORY_ID, MID, CATEGORY_S_ID) VALUES(?,?,?)";
+		String sql = "INSERT INTO ADD_CATEGORY(ADD_CATEGORY_ID, MID, CATEGORY_S_ID) VALUES(ADD_CATEGORYSEQ.NEXTVAL,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setString(1, member.getAdd_category_id());
-		pstmt.setString(2, member.getMid());
-		pstmt.setString(3, member.getCategoryId1());
+		pstmt.setString(1, member.getMid());
+		pstmt.setString(2, member.getCategoryId1());
 		
 		
 		result = pstmt.executeUpdate();
@@ -159,12 +158,11 @@ public class MemberInfoDAO implements IMemberInfoDAO
 		
 		Connection conn = dataSource.getConnection();
 		
-		String sql = "INSERT INTO ADD_REGION(ADD_REGION_ID, MID, REGION_S_ID) VALUES(?,?,?)";
+		String sql = "INSERT INTO ADD_REGION(ADD_REGION_ID, MID, REGION_S_ID) VALUES(ADD_REGIONSEQ.NEXTVAL,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setString(1, member.getAdd_region_id());
-		pstmt.setString(2, member.getMid());
-		pstmt.setString(3, member.getRegionId1());
+		pstmt.setString(1, member.getMid());
+		pstmt.setString(2, member.getRegionId1());
 		
 		
 		result = pstmt.executeUpdate();
@@ -364,8 +362,65 @@ public class MemberInfoDAO implements IMemberInfoDAO
       return result;
    }
 
-	
+	// 이름과 이메일을 이용해서 아이디 찾기
+	@Override
+	public ArrayList<MemberInfo> findUserId(String name, String email) throws SQLException
+	{
+		ArrayList<MemberInfo> result = new ArrayList<MemberInfo>();
+	     
+		Connection conn = dataSource.getConnection();
 		
+		String sql="SELECT USERID, TO_DATE(JOINDATE,'YYYY-MM-DD') AS JOINDATE FROM MEMBERINFO_VIEW2  WHERE NAME=? AND EMAIL=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1, name);
+	    pstmt.setString(2, email);
+	    
+	    ResultSet rs = pstmt.executeQuery();
+	    
+	    
+		while (rs.next())
+		{
+			MemberInfo member = new MemberInfo();
+			
+			member.setUserId(rs.getString("USERID"));
+			member.setBdate(rs.getString("JOINDATE"));
+			
+			result.add(member);
+		}
+			
+		rs.close();
+		pstmt.close();
+		conn.close();
+	    
+		
+		return result;
+	}
+	
+	// 비밀번호 찾기
+	@Override
+	public String findPwd(String userId, String email) throws SQLException
+	{
+		String result = null;
+	     
+		Connection conn = dataSource.getConnection();
+		
+		String sql="SELECT PWD FROM MEMBERINFO WHERE USERID=? AND EMAIL=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1, userId);
+	    pstmt.setString(2, email);
+	    
+	    ResultSet rs = pstmt.executeQuery();
+	    
+		while (rs.next())
+			result = rs.getString("PWD");
+		
+		rs.close();
+		pstmt.close();
+		conn.close();
+	    
+		
+		return result;
+	}	
 		
 	
 	

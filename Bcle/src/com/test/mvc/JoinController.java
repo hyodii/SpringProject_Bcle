@@ -6,6 +6,9 @@
 package com.test.mvc;
 
 
+
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -34,15 +37,12 @@ public class JoinController implements Controller
 	{
 		ModelAndView mav = new ModelAndView();
 		
-		// 세션처리 -----------------------------------------
+		int categorycnt = 0;
+		//int regionLcnt = 0;
+		int regioncnt = 0;
 		
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) // -- 로그인이 되어 있지 않은 상황
-		{
-			mav.setViewName("redirect:loginpage.action");
-			return mav;
-		}
-		// ----------------------------------------- 세션처리
+		
+		
 		
 		
 		// 파일 업로드의 정보
@@ -54,9 +54,6 @@ public class JoinController implements Controller
 		MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, encodingType,
 			        new DefaultFileRenamePolicy());
 		
-		// 세션값 id 수신 --MEMBERINFO의 주키(ID)임
-		String id = (String)session.getAttribute("id");
-		// System.out.println(id+"입니다");
 
 		
 		// Join.jsp로부터 데이터 수신. -- ★multi에서 데이터 가져와야함
@@ -69,6 +66,9 @@ public class JoinController implements Controller
 		String ssn = multi.getParameter("ssn");
 		String tel = multi.getParameter("tel");
 		String nickName = multi.getParameter("nickName");
+		//String region_L_Id1 = multi.getParameter("region_L_Id1");
+		//String region_L_Id2 = multi.getParameter("region_L_Id2");
+		//String region_L_Id3 = multi.getParameter("region_L_Id3");
 		String region_S_Id1 = multi.getParameter("region_S_Id1");
 		String region_S_Id2 = multi.getParameter("region_S_Id2");
 		String region_S_Id3 = multi.getParameter("region_S_Id3");
@@ -77,6 +77,7 @@ public class JoinController implements Controller
 		String category_L_Id3 = multi.getParameter("category_L_Id3");
 		String category_L_Id4 = multi.getParameter("category_L_Id4");
 		String category_L_Id5 = multi.getParameter("category_L_Id5");
+		
 		
 		try
 		{
@@ -90,6 +91,9 @@ public class JoinController implements Controller
 			member.setSsn(ssn);
 			member.setTel(tel);
 			member.setNickname(nickName);
+			//member.setRegion_L_Id1(region_L_Id1);
+			//member.setRegion_L_Id2(region_L_Id2);
+			//member.setRegion_L_Id3(region_L_Id3);
 			member.setRegionId1(region_S_Id1);
 			member.setRegionId2(region_S_Id2);
 			member.setRegionId3(region_S_Id3);
@@ -99,12 +103,42 @@ public class JoinController implements Controller
 			member.setCategoryId4(category_L_Id4);
 			member.setCategoryId5(category_L_Id5);
 			
+			/*
+			if(region_L_Id2!="")
+				regionLcnt++;
+			if(region_L_Id3!="")
+				regionLcnt++;
+			*/
+			
+			if(region_S_Id2!="")
+				regioncnt++;
+			if(region_S_Id3!="")
+				regioncnt++;
+			
+			if(category_L_Id2!="")
+				categorycnt++;
+			if(category_L_Id3!="")
+				categorycnt++;
+			if(category_L_Id4!="")
+				categorycnt++;
+			if(category_L_Id5!="")
+				categorycnt++;
+			
+			
+			dao.memberAdd(member);
 			dao.memberInfoAdd(member);
-			dao.search(userId);
 			
-			mav.addObject("userId", userId);
-			mav.addObject("nickName", nickName);
+			dao.addregionAdd(member);
+			dao.addCategoryAdd(member);
 			
+			
+			
+			
+			
+			// 회원가입 시 닉네임과 아이디를 받아오기 위함 
+			MemberInfo checklist = dao.search(userId);
+			
+			mav.addObject("checklist", checklist);
 			
 			mav.setViewName("/WEB-INF/view/JoinConfirm.jsp");
 			

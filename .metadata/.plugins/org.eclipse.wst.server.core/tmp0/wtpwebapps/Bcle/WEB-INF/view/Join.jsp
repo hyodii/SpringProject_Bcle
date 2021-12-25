@@ -49,7 +49,7 @@
 
 
 
-$(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실행?
+$(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실행
 {
 	
 	$("#emailText").focusout(function()
@@ -91,45 +91,45 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	});
 	
 	// 카테고리 같은값 중복 방지
-	$("#category_L_Id2").change(function()
+	$("#category_S_Id2").change(function()
 	{
 		//alert("이미 선택하신 카테고리 입니다.");
-		if( $("#category_L_Id2").val() == $("#category_L_Id1").val())
+		if( $("#category_S_Id2").val() == $("#category_S_Id1").val())
 		{
 			alert("이미 선택하신 카테고리 입니다.");
-			$('#category_L_Id2').val('');
+			$('#category_S_Id2').val('');
 			return false;
 		}
 	});
 	
-	$("#category_L_Id3").change(function()
+	$("#category_S_Id3").change(function()
 	{
-		if( $("#category_L_Id3").val() == $("#category_L_Id2").val() || $("#category_L_Id3").val() == $("#category_L_Id1").val())
+		if( $("#category_S_Id3").val() == $("#category_S_Id2").val() || $("#category_S_Id3").val() == $("#category_S_Id1").val())
 		{
 			alert("이미 선택하신 카테고리 입니다.");
-			$('#category_L_Id3').val('');
+			$('#category_S_Id3').val('');
 			return false;
 		}
 	});
 	
-	$("#category_L_Id4").change(function()
+	$("#category_S_Id4").change(function()
 	{
-		if( $("#category_L_Id4").val() == $("#category_L_Id3").val() || $("#category_L_Id4").val() == $("#category_L_Id2").val()
-				|| $("#category_L_Id4").val() == $("#category_L_Id1").val())
+		if( $("#category_S_Id4").val() == $("#category_S_Id3").val() || $("#category_S_Id4").val() == $("#category_S_Id2").val()
+				|| $("#category_S_Id4").val() == $("#category_S_Id1").val())
 		{
 			alert("이미 선택하신 카테고리 입니다.");
-			$('#category_L_Id4').val('');
+			$('#category_S_Id4').val('');
 			return false;
 		}
 	});
 	
-	$("#category_L_Id5").change(function()
+	$("#category_S_Id5").change(function()
 	{
-		if( $("#category_L_Id5").val() == $("#category_L_Id4").val() || $("#category_L_Id5").val() == $("#category_L_Id3").val()
-				|| $("#category_L_Id5").val() == $("#category_L_Id2").val() || $("#category_L_Id5").val() == $("#category_L_Id1").val())
+		if( $("#category_S_Id5").val() == $("#category_S_Id4").val() || $("#category_S_Id5").val() == $("#category_S_Id3").val()
+				|| $("#category_S_Id5").val() == $("#category_S_Id2").val() || $("#category_S_Id5").val() == $("#category_S_Id1").val())
 		{
 			alert("이미 선택하신 카테고리 입니다.");
-			$('#category_L_Id5').val('');
+			$('#category_S_Id5').val('');
 			return false;
 		}
 	});
@@ -312,6 +312,8 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	//각 상황별 alert 창 → required로 했는데 클리어하지가 않아서, 각 상황에 맞게 알림창을 띄우기로했다.
 	$("#submitBtn").click(function()
 	{
+		//alert($("#file").val().length);
+		
 	   if ($("#file").val().length == 0)
 	   {
 	      alert("사진을 등록해주세요.");
@@ -330,10 +332,10 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	      $("#userId").focus();
 	      return false;
 	   }
-	   if ($("#email").val().length == 0)
+	   if ($("#emailText").val().length == 0)
 	   {
 	      alert("이메일을 입력해주세요.");
-	      $("#email").focus();
+	      $("#emailText").focus();
 	      return false;
 	   }
 	   if ($("#pwd").val().length == 0)
@@ -348,10 +350,10 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	      $("#pwd2").focus();
 	      return false;
 	   }
-	   if ($("#ssn").val().length == 0)
+	   if ($("#ssn1").val().length == 0)
 	   {
 	      alert("주민번호 앞자리를 입력해주세요.");
-	      $("#ssn").focus();
+	      $("#ssn1").focus();
 	      return false;
 	   }
 	   if ($("#ssn2").val().length == 0)
@@ -360,10 +362,10 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	      $("#ssn2").focus();
 	      return false;
 	   }
-	   if ($("#tel").val().length == 0)
+	   if ($("#tel1").val().length == 0)
 	   {
 	      alert("연락처를 입력하세요.");
-	      $("#tel").focus();
+	      $("#tel1").focus();
 	      return false;
 	   }
 	   if ($("#nickName").val().length == 0)
@@ -386,7 +388,7 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	      $("#category_L_Id1").focus();
 	      return false;
 	   }
-	  
+	   
 	   
 	   $("#joinForm").submit();
 	});
@@ -576,7 +578,152 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	
 	});
 	
+	// 카테고리 대분류 → 소분류 선택 - 1
+	$("#category_L_Id1").change(function()
+	{
+	   $.ajax(
+	   {
+	      type : "POST"
+	      ,url : "ajaxjoincategory.action"
+	      ,data : {category_L_Id : $("#category_L_Id1").val()}
+	      ,dataType : "json"
+	      ,success : function(result)
+	      {
+	         //alert(result);
+	         $("#category_S_Id1").children().remove();
+	         $("#category_S_Id1").append("<option value=\"\">선택</option>");
+	         
+	         for(var i=0; i<result.length; i++)
+	         {
+	            $("#category_S_Id1").append("<option value=\""+result[i].category_s_id+"\">"+result[i].s_cat+"</option>");
+	         }
+	      }
+	      ,error : function(e)
+	      {
+	         alert(e.responseText);
+	      }
+	   
+	    });
 	
+	});
+	
+	// 카테고리 대분류 → 소분류 선택 - 2
+	$("#category_L_Id2").change(function()
+	{
+	   $.ajax(
+	   {
+	      type : "POST"
+	      ,url : "ajaxjoincategory.action"
+	      ,data : {category_L_Id : $("#category_L_Id2").val()}
+	      ,dataType : "json"
+	      ,success : function(result)
+	      {
+	         //alert(result);
+	         $("#category_S_Id2").children().remove();
+	         $("#category_S_Id2").append("<option value=\"\">선택</option>");
+	         
+	         for(var i=0; i<result.length; i++)
+	         {
+	            $("#category_S_Id2").append("<option value=\""+result[i].category_s_id+"\">"+result[i].s_cat+"</option>");
+	         }
+	      }
+	      ,error : function(e)
+	      {
+	         alert(e.responseText);
+	      }
+	   
+	    });
+	
+	});
+	
+	// 카테고리 대분류 → 소분류 선택 - 3
+	$("#category_L_Id3").change(function()
+	{
+	   $.ajax(
+	   {
+	      type : "POST"
+	      ,url : "ajaxjoincategory.action"
+	      ,data : {category_L_Id : $("#category_L_Id3").val()}
+	      ,dataType : "json"
+	      ,success : function(result)
+	      {
+	         //alert(result);
+	         $("#category_S_Id3").children().remove();
+	         $("#category_S_Id3").append("<option value=\"\">선택</option>");
+	         
+	         for(var i=0; i<result.length; i++)
+	         {
+	            $("#category_S_Id3").append("<option value=\""+result[i].category_s_id+"\">"+result[i].s_cat+"</option>");
+	         }
+	      }
+	      ,error : function(e)
+	      {
+	         alert(e.responseText);
+	      }
+	   
+	    });
+	
+	});
+	
+	// 카테고리 대분류 → 소분류 선택 - 4
+	$("#category_L_Id4").change(function()
+	{
+	   $.ajax(
+	   {
+	      type : "POST"
+	      ,url : "ajaxjoincategory.action"
+	      ,data : {category_L_Id : $("#category_L_Id4").val()}
+	      ,dataType : "json"
+	      ,success : function(result)
+	      {
+	         //alert(result);
+	         $("#category_S_Id4").children().remove();
+	         $("#category_S_Id4").append("<option value=\"\">선택</option>");
+	         
+	         for(var i=0; i<result.length; i++)
+	         {
+	            $("#category_S_Id4").append("<option value=\""+result[i].category_s_id+"\">"+result[i].s_cat+"</option>");
+	         }
+	      }
+	      ,error : function(e)
+	      {
+	         alert(e.responseText);
+	      }
+	   
+	    });
+	
+	});
+	
+	// 카테고리 대분류 → 소분류 선택 - 5
+	$("#category_L_Id5").change(function()
+	{
+	   $.ajax(
+	   {
+	      type : "POST"
+	      ,url : "ajaxjoincategory.action"
+	      ,data : {category_L_Id : $("#category_L_Id5").val()}
+	      ,dataType : "json"
+	      ,success : function(result)
+	      {
+	         //alert(result);
+	         $("#category_S_Id5").children().remove();
+	         $("#category_S_Id5").append("<option value=\"\">선택</option>");
+	         
+	         for(var i=0; i<result.length; i++)
+	         {
+	            $("#category_S_Id5").append("<option value=\""+result[i].category_s_id+"\">"+result[i].s_cat+"</option>");
+	         }
+	      }
+	      ,error : function(e)
+	      {
+	         alert(e.responseText);
+	      }
+	   
+	    });
+	
+	});
+	
+	/*
 	// 소분류 지역 버튼 클릭 이벤트 등록 및 지역에 값 넣기 액션 처리 - 1
 	$("#region_S_Id1").click(function()
 	{	
@@ -604,8 +751,6 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 		// 여기서의 this는 #소분류   이거아님!
 		var regionS = $("select[name=region_S_Id3] option:selected").text();
 	});
-	  
-			
 	
 	// 카테고리 대분류만 선택 - 1
 	$("#category_L_Id1").click(function()
@@ -637,7 +782,7 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	{
 		var category5 = $("select[name=category_L_Id5] option:selected").text();
 	});
-	
+	*/ 
 
 });
 </script>
@@ -670,12 +815,12 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 			<br>
 			<div class="form-group col-md-6 col-sm-6">
 				<label for="name">이름*</label>
-				<input type="text" id="name" placeholder="이름을 입력하세요." required="required" class="form-control"/>
+				<input type="text" id="name" name="name" placeholder="이름을 입력하세요." required="required" class="form-control"/>
 				<!-- <span id="err" style="display: none; color: red; font-size: small;">이름을 입력해주세요.</span><br> -->
 			</div>
 			<div class="id form-group col-md-6 col-sm-6">
 				<label for="userId">아이디*
-					<input type="text" id="userId" placeholder="아이디를 입력하세요." required="required" class="input_id form-control"/>
+					<input type="text" id="userId" name="userId" placeholder="아이디를 입력하세요." required="required" class="input_id form-control"/>
 					<!-- <input type="button" value="중복확인" id="check"> -->
 					<!-- <span id="err" style="display: none; color: red; font-size: small;">아이디를 입력해주세요.</span><br> -->
 					<span id=checkId  style="font-size: small;"></span><br>
@@ -684,7 +829,7 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 			<!-- 변경 -->
 	         <div class="form-group col-md-12 col-sm-12">
 	            <label for="email">이메일*</label>
-	            <input type="email" id="emailText" placeholder="이메일을 입력하세요." required="required" class="form-control"/>
+	            <input type="email" id="emailText" name="emailText" placeholder="이메일을 입력하세요." required="required" class="form-control"/>
 	            <span id="e_msg" style="display: none; color: red; font-size: small;"></span><br>
 	           <!--  <button id="emailCheck" onclick="emailSend()">인증코드 보내기</button><br>
 	            <input type="text" id="certificationNumber" placeholder="인증코드를 입력하세요." class="form-control">
@@ -694,33 +839,33 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 	         <!-- 변경 -->
 	         <div class="form-group col-md-12 col-sm-12">
 	            <label for="pwd">비밀번호 확인</label>&nbsp;
-	            <input type="password" id="pwd" placeholder="패스워드를 입력하세요." required="required" class="form-control"/>
+	            <input type="password" id="pwd" name="pwd" placeholder="패스워드를 입력하세요." required="required" class="form-control"/>
 	            <span id="err" style="display: none; color: red; font-size: small;">비밀번호를 입력해주세요.</span><br>
 	            <span id="p_msg1" style="display: none; color: green; font-size: small;"></span><br>
 	         </div>
 	         <!-- 변경 -->
 	         <div class="form-group col-md-12 col-sm-12">
 	            <label for="pwd2">비밀번호 재확인*</label>
-	            <input type="password" id="pwd2" placeholder="패스워드를 다시 입력하세요." required="required" class="form-control"/>
+	            <input type="password" id="pwd2" name="pwd2" placeholder="패스워드를 다시 입력하세요." required="required" class="form-control"/>
 	            <!-- <span>안녕하세요</span> -->
 	            <span id="err" style="display: none; color: red; font-size: small;">비밀번호를 한번 더입력해주세요.</span><br>
 	            <span id="p_msg2" style="display: none; color: green; font-size: small;"></span><br>
 	         </div>
 	         <div class="form-group col-md-12 col-sm-12">
 	            <label for="ssn1">주민번호*</label>
-	            <input type="text" id="ssn1" required="required"> - <input type="password" id="ssn2" required="required">
+	            <input type="text" id="ssn1" name="ssn1" required="required"> - <input type="password" id="ssn2" name="ssn2" required="required">
 	            <span id="s_msg" style="display: none; color: red; font-size: small;"></span><br>
 	         </div>
 	         <div class="form-group col-md-12 col-sm-12">
 	            <label for="tel1">연락처*</label>
-	            <input type="tel" id="tel1" required="required" style="width: 100px"><br>
+	            <input type="tel" id="tel1" name="tel1" required="required" style="width: 100px"><br>
 	            <span id="err" style="display: none; color: red; font-size: small;">전화번호를 입력해주세요.</span>
 	            <span id="t_msg" style="display: none; color: green; font-size: small;"></span><br>
 	         </div>
 
 			<div class="form-group col-md-6 col-sm-6">
 				<label for="nickName">닉네임*</label>
-				<input type="text" id="nickName" placeholder="ex) 행복한비클" required="required" class="input_nickname form-control">
+				<input type="text" id="nickName" name="nickName"  placeholder="ex) 행복한비클" required="required" class="input_nickname form-control">
 				<!-- <input type="button" value="중복확인"> -->
 				<!-- <input type="button" value="랜덤생성"> -->
 				<!-- <span id="err" style="display: none; color: red; font-size: small;">닉네임을 입력해주세요.</span><br> -->
@@ -774,7 +919,7 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 			</div>
 			<br>
 			<div class="form-group col-md-6 col-sm-6">
-				<label for="category">첫 번째 관심카테고리*</label>
+				<label for="category">첫 번째 관심 카테고리*</label>
 				<!-- <span id="err" style="display: none; color: red; font-size: small;">관심카테고리는 최소 1개 설정해야합니다.</span><br> -->
 				<select name="category_L_Id1" id="category_L_Id1" required="required" class="form-control">
 					<option value="">카테고리 선택</option>
@@ -782,49 +927,64 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
                        <option value="${category.category_l_id }">${category.l_cat }</option>
                     </c:forEach>
 				</select><br>
+				<select name="category_S_Id1" id="category_S_Id1" required="required" class="form-control">
+					<option value="">카테고리 상세선택</option>
+				</select><br>
 				<!-- <input type="text" id="category1" placeholder="카테고리1" required="required"> -->
 			</div>
 			<div class="form-group col-md-6 col-sm-6">
-				<label for="category">두 번째 관심카테고리</label>
+				<label for="category">두 번째 관심 카테고리</label>
 				<!-- <span id="err" style="display: none; color: red; font-size: small;">관심카테고리는 최소 1개 설정해야합니다.</span><br> -->
-				<select name="category_L_Id2" id="category_L_Id2" required="required" class="form-control">
+				<select name="category_L_Id2" id="category_L_Id2"  class="form-control">
 					<option value="">카테고리 선택</option>
 					<c:forEach var="category" items="${categoryLList }">
                        <option value="${category.category_l_id }">${category.l_cat }</option>
                     </c:forEach>
+				</select><br>
+				<select name="category_S_Id2" id="category_S_Id2" class="form-control">
+					<option value="">카테고리 상세선택</option>
 				</select><br>
 				<!-- <input type="text" id="category2" placeholder="카테고리2"> -->
 			</div>
 			<div class="form-group col-md-6 col-sm-6">
-				<label for="category">세 번째 관심카테고리</label>
+				<label for="category">세 번째 관심 카테고리</label>
 				<!-- <span id="err" style="display: none; color: red; font-size: small;">관심카테고리는 최소 1개 설정해야합니다.</span><br> -->
-				<select name="category_L_Id3" id="category_L_Id3" required="required" class="form-control">
+				<select name="category_L_Id3" id="category_L_Id3"  class="form-control">
 					<option value="">카테고리 선택</option>
 					<c:forEach var="category" items="${categoryLList }">
                        <option value="${category.category_l_id }">${category.l_cat }</option>
                     </c:forEach>
+				</select><br>
+				<select name="category_S_Id3" id="category_S_Id3" class="form-control">
+					<option value="">카테고리 상세선택</option>
 				</select><br>
 				<!-- <input type="text" id="category3" placeholder="카테고리3"> -->
 			</div>
 			<div class="form-group col-md-6 col-sm-6">
-				<label for="category">네 번째 관심카테고리</label>
+				<label for="category">네 번째 관심 카테고리</label>
 				<!-- <span id="err" style="display: none; color: red; font-size: small;">관심카테고리는 최소 1개 설정해야합니다.</span><br> -->
-				<select name="category_L_Id4" id="category_L_Id4" required="required" class="form-control">
+				<select name="category_L_Id4" id="category_L_Id4"  class="form-control">
 					<option value="">카테고리 선택</option>
 					<c:forEach var="category" items="${categoryLList }">
                        <option value="${category.category_l_id }">${category.l_cat }</option>
                     </c:forEach>
 				</select><br>
+				<select name="category_S_Id4" id="category_S_Id4" class="form-control">
+					<option value="">카테고리 상세선택</option>
+				</select><br>
 				<!-- <input type="text" id="category4" placeholder="카테고리4"> -->
 			</div>
 			<div class="form-group col-md-6 col-sm-6">
-				<label for="category">다섯 번째 관심카테고리</label>
+				<label for="category">다섯 번째 관심 카테고리</label>
 				<!-- <span id="err" style="display: none; color: red; font-size: small;">관심카테고리는 최소 1개 설정해야합니다.</span><br> -->
-				<select name="category_L_Id5" id="category_L_Id5" required="required" class="form-control">
+				<select name="category_L_Id5" id="category_L_Id5" class="form-control">
 					<option value="">카테고리 선택</option>
 					<c:forEach var="category" items="${categoryLList }">
                        <option value="${category.category_l_id }">${category.l_cat }</option>
                     </c:forEach>
+				</select><br>
+				<select name="category_S_Id5" id="category_S_Id5" class="form-control">
+					<option value="">카테고리 상세선택</option>
 				</select><br>
 				<!-- <input type="text" id="category5" placeholder="카테고리5"> -->
 			</div>

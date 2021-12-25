@@ -22,6 +22,8 @@ public interface IMemberInfoDAO
 	public int addCategoryAdd(MemberInfo member) throws SQLException;
 	public int addregionAdd(MemberInfo member) throws SQLException;
 	
+	public ArrayList<MemberInfo> findUserId(String name, String email) throws SQLException;
+	public String findPwd(String userId, String email) throws SQLException;
 	
 	public int checkId(String userId) throws SQLException;
 	public int checkNickName(String nickname) throws SQLException;

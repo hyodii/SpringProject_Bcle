@@ -3,18 +3,20 @@
 <fullyQualifiedTypeName name="com.test.mvc.IMemberDAO"/>
 <fullyQualifiedTypeName name="com.sun.corba.se.pept.transport.Connection"/>
 <fullyQualifiedTypeName name="com.test.mvc.MemberInfoDAO"/>
-<fullyQualifiedTypeName name="com.test.mvc.MemberInfo"/>
 <fullyQualifiedTypeName name="com.test.mvc.IMemberInfoDAO"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.test.mvc.IAdminDAO"/>
 <fullyQualifiedTypeName name="com.test.mvc.RegionL"/>
 <fullyQualifiedTypeName name="com.test.mvc.RegionS"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="javax.activation.DataSource"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="com.test.mvc.IJoinDAO"/>
 <fullyQualifiedTypeName name="java.sql.CallableStatement"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
+<fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartRequest"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.test.mvc.MemberInfo"/>
 </qualifiedTypeNameHistroy>
