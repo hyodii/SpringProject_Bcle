@@ -3,6 +3,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -34,13 +35,13 @@ oinConfirm.jsp
 			<div>				
 				<h1>BE:CLE</h1>
 				<h2>회원가입이 완료 되었습니다.</h2>
-				<h3><span>따뜻한통감자</span>님의 회원가입을 축하합니다.</h3>
-				<h3>비클의 새로운 아이디는 <span>testid1004</span>입니다.</h3>
+				<h3><span>${nickName}</span>님의 회원가입을 축하합니다.</h3>
+				<h3>비클의 새로운 아이디는 <span>${userId}</span>입니다.</h3>
 			</div>
 			<br>
 		
-			<input type="button" value="홈으로">		
-			<input type="button" value="로그인">
+			<input type="button" value="홈으로" onclick="javascript:location.href='<%=cp%>/mainpage.action'">		
+			<input type="button" value="로그인" onclick="javascript:location.href='<%=cp%>/loginpage.action'">
 		</form>
 	</div>
 </div>

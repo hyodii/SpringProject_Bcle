@@ -46,6 +46,8 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		<property name="dataSource" ref="remoteDataSource"></property>
 	</bean>
 	
+	
+	
 	<!-- ClubDAO 등록 -->
 	<bean id="clubDAO" class="com.test.mvc.ClubDAO">
 		<property name="dataSource" ref="remoteDataSource"></property>
@@ -107,7 +109,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	-->
 	 
 	<!-- Join 관련 -->
-	<bean name="/joinform.action" class="com.test.mvc.JoinFornController">
+	<bean name="/joinform.action" class="com.test.mvc.JoinFormController">
 		<property name="dao" ref="JoinDAO"></property>
 	</bean>
 	
@@ -124,8 +126,15 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean name="/ajaxjoinregion.action" class="com.test.mvc.AjaxJoinRegionController">
 		<property name="dao" ref="JoinDAO"></property>
 	</bean>
+	<!-- 주민번호 유효성 검사 -->
+	<bean name="/ssncheck.action" class="com.test.mvc.LoginSsnController">
+		<property name="dao" ref="MemberInfoDAO"></property>
+	</bean>
 	<!-- 가입하기 눌렀을 때 -->
-	<bean name="/join.action" class="com.test.mvc.JoinController"></bean>
+	<bean name="/join.action" class="com.test.mvc.JoinController">
+		<property name="dao" ref="MemberInfoDAO"></property>
+	</bean>
+	
 	
 	
 	<!-- club 개설&리스트 관련 controller -->
