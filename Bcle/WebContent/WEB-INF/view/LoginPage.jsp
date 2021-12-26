@@ -136,7 +136,7 @@
 					
 					<div style="margin-left: 50px;" >
 					<a href="findid.action">아이디 찾기</a>
-					<a href="findpassword.action">비밀번호 찾기</a>
+					<a href="findingpassword.action">비밀번호 찾기</a>
 					<a href="joinform.action">회원가입</a>
 					</div>
 					<br>

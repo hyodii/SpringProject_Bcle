@@ -85,7 +85,10 @@ $(document).ready(function()   // 페이지가 로드됐을 때 제이쿼리 실
 		</form>
 	</div>
 </div>
-
-
+<%-- 
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
+ --%>
 </body>
 </html>

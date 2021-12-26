@@ -52,13 +52,17 @@
 			<br>
 			
 			<input type="button" value="비밀번호찾기" class="btn"
-			onclick="javascript:location.href='<%=cp%>/findpassword.action'">		
+			onclick="javascript:location.href='<%=cp%>/findingpassword.action'">		
 			<input type="button" value="로그인" class="btn"
 			onclick="javascript:location.href='<%=cp%>/loginpage.action'">
 		</form>
 	</div>	
 	</div>
 </div>
-
+<%-- 
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
+ --%>
 </body>
 </html>
