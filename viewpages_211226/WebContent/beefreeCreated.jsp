@@ -224,6 +224,12 @@ body {font-family: 'Noto Sans KR', sans-serif; font-size: 14px;}
 	- 동아리 내 게시판 > 자유글 > 등록하기
 -->
 
+<div>
+<div>
+	<c:import url="nav.jsp"></c:import>
+</div>
+
+
 <div id="bbs">
 
    <div id="bbs_title">
@@ -296,6 +302,11 @@ body {font-family: 'Noto Sans KR', sans-serif; font-size: 14px;}
    </form>
    
 </div><!-- close #bbs -->
+
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
+</div>
 
 </body>
 </html>
