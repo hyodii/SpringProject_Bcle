@@ -17,10 +17,10 @@ public class MemberInfo
 	private String bdate, login_date, categoryId1;			// 가입일자, 마지막 로그인 날짜, 카테고리 소분류 코드 
 	
 	// ADD_REGION 속성
-	private String regionId2, regionId3;	// 지역 선택 코드, 추가 지역코드2, 추가 지역코드3 (소분류)
+	private String add_region_id , regionId2, regionId3;	// 지역 선택 코드, 추가 지역코드2, 추가 지역코드3 (소분류)
 	
 	// ADD_CATEGORY 속성
-	private String categoryId2, categoryId3, categoryId4, categoryId5;	//카테고리 선택 코드, 추가 카테고리코드2, 추가 카테고리코드3, 추가 카테고리코드4,추가 카테고리코드5
+	private String add_category_id, categoryId2, categoryId3, categoryId4, categoryId5;	//카테고리 선택 코드, 추가 카테고리코드2, 추가 카테고리코드3, 추가 카테고리코드4,추가 카테고리코드5
 	
 	// 지역 대분류 속성
 	private String region_L_Id1, region_L_Id2, region_L_Id3;	// 지역 대분류 1 2 3
@@ -139,6 +139,14 @@ public class MemberInfo
 	{
 		this.categoryId1 = categoryId1;
 	}
+	public String getAdd_region_id()
+	{
+		return add_region_id;
+	}
+	public void setAdd_region_id(String add_region_id)
+	{
+		this.add_region_id = add_region_id;
+	}
 	public String getRegionId2()
 	{
 		return regionId2;
@@ -154,6 +162,14 @@ public class MemberInfo
 	public void setRegionId3(String regionId3)
 	{
 		this.regionId3 = regionId3;
+	}
+	public String getAdd_category_id()
+	{
+		return add_category_id;
+	}
+	public void setAdd_category_id(String add_category_id)
+	{
+		this.add_category_id = add_category_id;
 	}
 	public String getCategoryId2()
 	{

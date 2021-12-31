@@ -37,10 +37,8 @@ JoinConfirm.jsp
 			<div>				
 				<h1>BE:CLE</h1>
 				<h2>회원가입이 완료 되었습니다.</h2>
-				<c:forEach var="check" items="${checklist}" >
-					<h3><span>${check.nickName}</span>님의 회원가입을 축하합니다.</h3>
-					<h3>비클의 새로운 아이디는 <span>${check.userId}</span>입니다.</h3>					
-				</c:forEach>
+					<h3><span style="font-weight: bold;">${checklist.nickname}</span>님의 회원가입을 축하합니다.</h3>
+					<h3>비클의 새로운 아이디는 <span style="font-weight: bold;">${checklist.userId}</span>입니다.</h3>					
 			</div>
 			<br>
 		
