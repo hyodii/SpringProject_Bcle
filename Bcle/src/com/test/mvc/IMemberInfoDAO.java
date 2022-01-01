@@ -37,4 +37,7 @@ public interface IMemberInfoDAO
 	// id 찾기
 	public String findId(String ssn) throws SQLException;
 	
+	public ArrayList<MemberInfo> findUserId(String name, String email) throws SQLException;
+	public String findPwd(String userId, String email) throws SQLException;
+	
 }

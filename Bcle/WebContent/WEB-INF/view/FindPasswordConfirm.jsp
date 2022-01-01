@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FindIdConfirm.jsp</title>
+<title>FindPasswordConfirm.jsp</title>
 <style>
 .outer {
   display: flex;
@@ -34,7 +34,7 @@
 </div>
 <div class="subheader">
 		<p>B:CLE</p>
-		<p class="title">아이디찾기</p>
+		<p class="title">비밀번호 찾기</p>
 	</div>
 
 <!-- 컨텐츠영역 -->
@@ -44,15 +44,13 @@
 	<div class="row register-form">
 		<form action="">
 				<div class="form-group col-md-12 col-sm-12">
-					<c:forEach var="check" items="${checkId }" >
-					고객님의 등록된 아이디는 아래와 같습니다.<br> 
-					${check.userId} (가입한 날짜 ${check.bdate})
-					</c:forEach> 
+					고객님의 등록된 비밀번호는 아래와 같습니다.<br> 
+					${checkPassword}
 				</div>
 			<br>
 			
-			<input type="button" value="비밀번호찾기" class="btn"
-			onclick="javascript:location.href='<%=cp%>/findingpassword.action'">		
+			<input type="button" value="아이디찾기" class="btn"
+			onclick="javascript:location.href='<%=cp%>/findid.action'">		
 			<input type="button" value="로그인" class="btn"
 			onclick="javascript:location.href='<%=cp%>/loginpage.action'">
 		</form>

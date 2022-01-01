@@ -414,5 +414,65 @@ public class MemberInfoDAO implements IMemberInfoDAO
 		return result;
 
 	}
+	
+	// 이름과 이메일을 이용해서 아이디 찾기
+	@Override
+	public ArrayList<MemberInfo> findUserId(String name, String email) throws SQLException
+	{
+		ArrayList<MemberInfo> result = new ArrayList<MemberInfo>();
+	     
+		Connection conn = dataSource.getConnection();
+		
+		String sql="SELECT USERID, TO_DATE(JOINDATE,'YYYY-MM-DD') AS JOINDATE FROM MEMBERINFO_VIEW2  WHERE NAME=? AND EMAIL=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1, name);
+	    pstmt.setString(2, email);
+	    
+	    ResultSet rs = pstmt.executeQuery();
+	    
+	    
+		while (rs.next())
+		{
+			MemberInfo member = new MemberInfo();
+			
+			member.setUserId(rs.getString("USERID"));
+			member.setBdate(rs.getString("JOINDATE"));
+			
+			result.add(member);
+		}
+			
+		rs.close();
+		pstmt.close();
+		conn.close();
+	    
+		
+		return result;
+	}
+	
+	// 비밀번호 찾기
+	@Override
+	public String findPwd(String userId, String email) throws SQLException
+	{
+		String result = null;
+	     
+		Connection conn = dataSource.getConnection();
+		
+		String sql="SELECT PWD FROM MEMBERINFO WHERE USERID=? AND EMAIL=?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+	    pstmt.setString(1, userId);
+	    pstmt.setString(2, email);
+	    
+	    ResultSet rs = pstmt.executeQuery();
+	    
+		while (rs.next())
+			result = rs.getString("PWD");
+		
+		rs.close();
+		pstmt.close();
+		conn.close();
+	    
+		
+		return result;
+	}	
 
 }
