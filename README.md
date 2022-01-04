@@ -47,7 +47,6 @@
 ![비밀번호찾기](https://user-images.githubusercontent.com/87711421/147847440-68b9a0aa-eaf3-4e54-af7d-8dffed293cc4.png)
 ![메인페이지](https://user-images.githubusercontent.com/87711421/147847443-a3696905-4374-4e55-89cc-bb7160d45405.png)
 ![동아리 개설](https://user-images.githubusercontent.com/87711421/147847449-207a3687-ce61-4a02-bca9-e24fb338a81b.png)
-
-
-
+![동아리메인](https://user-images.githubusercontent.com/87711421/148055372-20e128e5-1052-4cfa-b25a-0b81cc72a9e7.png)
+![모임개설](https://user-images.githubusercontent.com/87711421/148055390-0072d006-e701-4b2b-a33d-5eefb5fa1e1e.png)
 
