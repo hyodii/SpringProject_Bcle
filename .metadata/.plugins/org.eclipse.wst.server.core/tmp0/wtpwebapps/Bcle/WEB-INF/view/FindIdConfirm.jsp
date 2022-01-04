@@ -41,15 +41,28 @@
 
 <div class="outer">
 	<div class="inner">
+	<div class="row register-form">
 		<form action="">
-			<div>고객님의 등록된 아이디는 아래와 같습니다.<br> testid (2021/12/02가입) </div>
+				<div class="form-group col-md-12 col-sm-12">
+					<c:forEach var="check" items="${checkId }" >
+					고객님의 등록된 아이디는 아래와 같습니다.<br> 
+					${check.userId} (가입한 날짜 ${check.bdate})
+					</c:forEach> 
+				</div>
 			<br>
-		
-			<input type="button" value="비밀번호찾기">		
-			<input type="button" value="로그인">
+			
+			<input type="button" value="비밀번호찾기" class="btn"
+			onclick="javascript:location.href='<%=cp%>/findingpassword.action'">		
+			<input type="button" value="로그인" class="btn"
+			onclick="javascript:location.href='<%=cp%>/loginpage.action'">
 		</form>
+	</div>	
 	</div>
 </div>
-
+<%-- 
+<div>
+	<c:import url="footer.jsp"></c:import>
+</div>
+ --%>
 </body>
 </html>
