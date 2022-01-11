@@ -7,7 +7,7 @@
 - 사용자가 동아리를 쉽게 모집, 관리하여 동아리 활동이 활성화 될 수 있도록 하는 동아리 사이트를 기획함.
 
 ### 개발환경 및 언어
-- DE : Eclipse IDE for Enterprise Java Developers 2021-12
+- IDE : Eclipse IDE for Enterprise Java Developers 2021-12
 - Language : JDK 1.8, HTML5, CSS3, JavaScript
 - DB : Oracle RDBMS
 - WAS : Apache Tomcat-8.5.54
