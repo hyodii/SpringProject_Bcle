@@ -7,12 +7,12 @@
 - 사용자가 동아리를 쉽게 모집, 관리하여 동아리 활동이 활성화 될 수 있도록 하는 동아리 사이트를 기획함.
 
 ### 개발환경 및 언어
-- DE : Eclipse IDE for Enterprise Java Developers 2021-12
+- IDE : Eclipse IDE for Enterprise Java Developers 2021-12
 - Language : JDK 1.8, HTML5, CSS3, JavaScript
 - DB : Oracle RDBMS
 - WAS : Apache Tomcat-8.5.54
 - Framework : Spring Framework 3.0.2
-- API : 기상청 날씨
+- API : 기상청 날씨 / 미세먼지
 
 ### 프로젝트 목표
 1. 기존 동아리 장과 동아리원이 사이트를 통해 일정, 커뮤니티의 기능을 사용하여 체계적으로 모임을 운영하고 활동을 기록하여 모임이 지속적으로 이어질 수 있도록 한다.(관리) <br>
